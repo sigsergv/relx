@@ -26,7 +26,7 @@ do(Release, State) ->
         andalso rlx_state:mode(State1) =/= dev of
         true ->
             ?log_debug("Stripping release beam files", []),
-            case beam_lib:strip_release(OutputDir) of
+            case beam_lib:strip_release(OutputDir, ["Attr"]) of
                 {ok, _} ->
                     {ok, State1};
                 {error, _, Reason} ->
